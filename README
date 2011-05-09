@@ -1,0 +1,9 @@
+AS3Introspection Library
+------------------------
+
+The AS3Introspection library serves two main purposes:
+1. It provides "describeType on steroids" functionality, in that it can provide an XML representation of all public classes, interfaces and global variables, constants, functions and namespaces within a SWF. In addition, the XML includes all public, protected and public or protected-based custom namespace members of those classes and interfaces.
+
+2. It provides the basis for creating other SWF-processing frameworks by ensuring that the expected processing methods are referenced via interfaces. A "mock SWF" generator is already planned for example. This will generate AS3 files that contain mock versions of all the public content of a SWF, allowing all aspects of it - including protected and static methods and global functions - to be mocked with ease. Other processing ideas might be a JSON representation generator, or a means of automatically generating say PHP equivalents of AS3 value objects for AMFPHP-based solutions.
+
+Tutorials will be appearing at http://davidarno.org soon.

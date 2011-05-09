@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../override.css" type="text/css"><meta name="keywords" content="RepresentationHierarchy,org.ghostfish.as3introspection.abc.RepresentationHierarchy,_formatter,_representationFactory,childen,currentRepresentation,references"><title>org.ghostfish.as3introspection.abc.RepresentationHierarchy</title></head><body><script language="javascript" type="text/javascript" src="../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'RepresentationHierarchy - AS3Introspection API Documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">AS3Introspection API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../package-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../class-summary.html" onclick="loadClassListFrame('../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../all-index-A.html" onclick="loadClassListFrame('../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../index.html?org/ghostfish/as3introspection/abc/RepresentationHierarchy.html&amp;org/ghostfish/as3introspection/abc/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">RepresentationHierarchy</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("RepresentationHierarchy"); titleBar_setSubNav(false,true,false,false,false,false,false,false,false,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">org.ghostfish.as3introspection.abc</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  RepresentationHierarchy</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">RepresentationHierarchy  <img src="../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><p></p><p></p>
+	 Simple "value object" for holding a heirarachy of trait representations.
+	 
+	 <p>By convention, either currentRepresentation (and optionally childen) should be
+	 set, or references should be set.</p>
+	 
+	              <p>For a typical SWF created by the ABCWalker, there will be one instance of this 
+	 class that references one or more further instances: one per DoABC tag found in
+	 the SWF. If the SWF was created according to AS3 rules, each of those further
+	 instances will be a "packaged representation" (see below.) However, the SWF
+	 format isn't restricted to AS3 rules and so one or more of those referenced
+	 instances might itself be a set of references (again see below for more details)</p>
+	 
+	              <p>An AS3 source file must consist of exactly one public trait (variable, constant,
+	 namespace, function, getter, setter, interface or class) and zero or more private 
+	 traits. The public trait must be contained within a package declaration. The 
+	 private traits are declared outside of the package declaration. As the ABCWalker 
+	 ignores the private traits, it therefore creates a packaged representation of the 
+	 trait. The currentRepresentation field will contain that trait's details and - if 
+	 an interface or class, children will contain details of the static and instance
+	 member traits.</p>
+	 
+	              <p>Whilst most SWFs will be created from AS3 via a compiler that obeys the AS3
+	 syntax rules, some won't be. As case in point is the SWF within the playerglobal.swc
+	 that forms part of the Flex SDK. In this case the Object DoABC tag defines
+	 multiple public traits. It is for this reason that the ABCWalker might return
+	 more than one lwvel of references within the representation hierarchy.</p> 
+	           <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#childen" class="signatureLink">childen</a> : Vector.&lt;<a href="../../../../org/ghostfish/as3introspection/representations/AbstractRepresentation.html">AbstractRepresentation</a>&gt;<div class="summaryTableDescription">
+		 If currentRepresentation represents an interface or class, then the
+		 representations of its members will be stored in this field.</div></td><td class="summaryTableOwnerCol">RepresentationHierarchy</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#currentRepresentation" class="signatureLink">currentRepresentation</a> : <a href="../../../../org/ghostfish/as3introspection/representations/AbstractRepresentation.html">AbstractRepresentation</a><div class="summaryTableDescription">
+		 The current representation within a hierarchy.</div></td><td class="summaryTableOwnerCol">RepresentationHierarchy</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#references" class="signatureLink">references</a> : Vector.&lt;<a href="../../../../org/ghostfish/as3introspection/abc/RepresentationHierarchy.html">RepresentationHierarchy</a>&gt;<div class="summaryTableDescription">
+		 One or more references to further representation heirarchies
+		 
+		 This field is used to facilitate RepresentationHierarchy being able 
+		 to represent an entire SWF/ DoABC tag/ public trait collection
+		 hierarchy using the same class.
+		 
+		 Should be null if currentRepresentation is set
+		 </div></td><td class="summaryTableOwnerCol">RepresentationHierarchy</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="childen"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">childen</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>public var childen:Vector.&lt;<a href="../../../../org/ghostfish/as3introspection/representations/AbstractRepresentation.html">AbstractRepresentation</a>&gt;</code><p></p><p></p><p>
+		 If currentRepresentation represents an interface or class, then the
+		 representations of its members will be stored in this field.
+		 
+		 <p>Should be null unless currentRepresentation represents an interface or 
+		 class, in which case it should not be null. For example a class with no 
+		 public members should result in a zero length Vector.</p>
+		 </p></div><a name="propertyDetail"></a><a name="currentRepresentation"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">currentRepresentation</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public var currentRepresentation:<a href="../../../../org/ghostfish/as3introspection/representations/AbstractRepresentation.html">AbstractRepresentation</a></code><p></p><p></p><p>
+		 The current representation within a hierarchy.
+		 
+		 <p>Should be null if references is set.</p>
+		 </p></div><a name="propertyDetail"></a><a name="references"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">references</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public var references:Vector.&lt;<a href="../../../../org/ghostfish/as3introspection/abc/RepresentationHierarchy.html">RepresentationHierarchy</a>&gt;</code><p></p><p></p><p>
+		 One or more references to further representation heirarchies
+		 
+		 <p>This field is used to facilitate RepresentationHierarchy being able 
+		 to represent an entire SWF/ DoABC tag/ public trait collection
+		 hierarchy using the same class.</p>
+		 
+		 <p>Should be null if currentRepresentation is set</p>
+		 </p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer>AS3Introspection API Documentation</footer><br/>Sun May 8 2011, 10:34 PM +01:00  </center></div></body></html><!--AS3Introspection API Documentation<br/>Sun May 8 2011, 10:34 PM +01:00  -->

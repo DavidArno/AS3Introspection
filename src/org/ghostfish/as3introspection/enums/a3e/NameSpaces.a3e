@@ -1,0 +1,11 @@
+package org.ghostfish.as3introspection.enums
+{
+	enum NameSpaces(keyword:String)
+	{
+		Public("public"),
+		Protected("protected"),
+		Internal("internal"),
+		Private("private"),
+		Custom(null)
+	}
+}

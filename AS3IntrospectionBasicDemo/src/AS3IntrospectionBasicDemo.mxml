@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="450" height="500" addedToStage="onCreationComplete()">
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			
+			import org.as3commons.bytecode.swf.SWFFile;
+			import org.as3commons.bytecode.swf.SWFFileIO;
+			import org.ghostfish.as3introspection.abc.ABCWalker;
+			import org.ghostfish.as3introspection.factory.IRepresentationFactory;
+			import org.ghostfish.as3introspection.factory.XMLFormatter;
+			import org.ghostfish.as3introspection.factory.XMLRepresentationFactory;
+			
+			protected function onCreationComplete():void
+			{
+				var factory:IRepresentationFactory = new XMLRepresentationFactory();
+				var formatter:XMLFormatter = new XMLFormatter();
+				var io:SWFFileIO = new SWFFileIO();
+				var swfFile:SWFFile = io.read(stage.loaderInfo.bytes);
+				
+				var walker:ABCWalker = new ABCWalker(factory, formatter);
+				walker.processSWF(swfFile);
+				
+				text.text = formatter.result;
+			}
+		]]>
+	</fx:Script>
+	<s:VGroup width="100%" height="100%">
+		<s:Label text="Simple AS3Introspection Demo"/>
+		<s:Label text="The XML representation of this SWF is shown below:"/>
+		<s:TextArea width="100%" height="100%" id="text"/>
+	</s:VGroup>
+</s:Application>
